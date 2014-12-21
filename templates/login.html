@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="" method=post class="form-horizontal">
+    <h2>登录问问</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge"
+            placeholder="输入用户名" required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="password" id="password" name="password" class="input-xlarge"
+            placeholder="输入密码" required>
+        </div>
+    </div>
+
+     <div class="control-group">
+        <div class="controls">
+          <input type="checkbox" id="remember_me" name="remember_me">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">登录</button>
+        </div>
+    </div>
+  </form>
+{% endblock %}

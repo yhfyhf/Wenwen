@@ -1,0 +1,1 @@
+create database if not exists zhihu_flask default charset="utf8";

@@ -1,0 +1,4 @@
+*.pyc
+config.py
+.idea
+.DS_Store

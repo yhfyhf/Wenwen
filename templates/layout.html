@@ -1,0 +1,61 @@
+<!doctype html>
+<title>问问</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<style>
+	body {
+		padding-top: 60px;
+		padding-bottom: 100px;
+	}
+</style>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+
+<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="brand" href="/">问问</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="/">首页</a></li>
+						{% if g.user.is_authenticated()%}
+							<li><a href="/new">提问</a></li>
+							<li><a href="{{ url_for('logout') }}">登出</a></li>
+						{% endif %}
+						{% if not g.user.is_authenticated()%}
+							<li><a href="{{ url_for('login') }}">登录</a></li>
+							<li><a href="{{ url_for('register') }}">注册</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+</div>
+
+<div id="main" class="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	  <div class="alert">
+		    <ul class="flashes">
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		</div>
+	{% endif %}
+	{% endwith %}
+
+	{% block body %}{% endblock %}
+	<hr>
+	<footer id="footer">
+		<p>&copy; Haofei Ying 2014</p>
+	</footer>
+</div>
