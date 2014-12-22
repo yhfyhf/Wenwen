@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from flask import g
 from flask.ext.login import LoginManager, current_user
-from mysite import app, db
+from mysite import app, db, context
 from mysite.model.user import User
 
 
@@ -22,4 +22,4 @@ def before_request():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run()
+    app.run(ssl_context=context)

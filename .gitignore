@@ -2,3 +2,5 @@
 config.py
 .idea
 .DS_Store
+*.key
+*.crt

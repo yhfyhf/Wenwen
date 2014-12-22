@@ -1,10 +1,12 @@
 from datetime import datetime
 from mysite import db
+from mysite.model import SerializableModel
 
-class Question(db.Model):
+
+class Question(db.Model, SerializableModel):
 
     __tablename__ = 'question'
-    id = db.Column('question_id', db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60))
     description = db.Column(db.String(10000))
     create_time = db.Column(db.DateTime)
