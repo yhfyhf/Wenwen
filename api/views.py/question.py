@@ -7,7 +7,6 @@ from mysite.api.token import auth
 @api.route('/questions', methods=['GET'])
 @auth.login_required
 def questions():
-    questions = Question.query.all()
-    return jsonify({ "questions": [q.to_dict() for q in questions] }), 200, CONTENTTYPE
-
-
+    questions = Question.query.order_by('-id').limit(5).all()
+    ret = jsonify({ "questions": [q.to_dict() for q in questions] })
+    return ret, 200, CONTENTTYPE

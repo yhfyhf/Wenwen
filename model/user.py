@@ -4,13 +4,15 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, Signatur
 from mysite import app, db
 from mysite.model import SerializableModel
 from datetime import datetime
-
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 class User(db.Model, SerializableModel):
 
     __tablename__ = "user"
-    id = db.Column('user_id', db.Integer, primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True)
     username = db.Column('username', db.String(20), unique=True)
     password = db.Column('password', db.String(250))
     email = db.Column('email', db.String(50), unique=True)

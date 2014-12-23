@@ -11,7 +11,7 @@ context.use_certificate_file('host.crt')
 app = Flask(__name__)
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = 'secret_key'
-app.config['DEBUG'] = False    # Flask-sslify only works when DEBUG is False
+app.config['DEBUG'] = True    # Flask-sslify only works when DEBUG is False
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_HOST_ONLINE
 app.config['JSON_AS_ASCII'] = False
 
@@ -25,4 +25,4 @@ from mysite.views import register
 from mysite.views import question
 
 from mysite.api import api
-app.register_module(api, url_prefix="/api")
+app.register_blueprint(api, url_prefix="/api")
