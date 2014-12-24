@@ -22,12 +22,10 @@ class User(db.Model, SerializableModel):
     n_downed = db.Column('n_downed', db.Integer)
 
 
-    def __init__(self, username, password, email):
+    def __init__(self, username, password):
         self.username = username
         self.set_password(password)
-        self.email = email
         self.reg_time = datetime.now()
-        self.description =""
         self.n_uped = self.n_downed = 0
 
     def set_password(self, password):

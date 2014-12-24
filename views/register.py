@@ -14,22 +14,15 @@ def register():
     # request method is POST
     session = db.session     
     un = request.form['username']
-    e = request.form['email']
 
     all_usernames = session.query(User.username).all()
-    all_emails = session.query(User.email).all()
     
     if (un,) in all_usernames:   # username existed
         flash(u"用户名已被注册！")
         session.close()
         return redirect(url_for('register'))
-    if (e,) in all_emails:       # email existed
-        flash(u"邮箱已被注册！")
-        session.close()
-        return redirect(url_for('register'))
-
     else:
-        user = User(un, request.form['password'], e)
+        user = User(un, request.form['password'])
         session.add(user)
         session.commit()
         session.close()
