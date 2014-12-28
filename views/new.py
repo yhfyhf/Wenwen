@@ -13,12 +13,12 @@ sys.setdefaultencoding("utf-8")
 def new():
     if request.method == 'POST':
         if not request.form['title']:
-            flash(u'问题不能为空！', 'error')
+            flash(u'Please write down your questions!', 'error')
         else:
             question = Question(request.form['title'], request.form['description'], g.user.id)
             db.session.add(question)
             db.session.commit()
-            flash(u'问题成功发布！')
+            flash(u'Question published!')
             return redirect(url_for('index'))
     return render_template('new.html')
     
