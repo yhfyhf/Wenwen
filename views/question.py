@@ -2,7 +2,8 @@
 from flask import render_template, request, g, redirect, url_for, flash
 from flask.ext.login import login_required
 from mysite import app, db
-from mysite.model.question import Question 
+from mysite.model.question import Question
+from mysite.model.answer import Answer 
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")

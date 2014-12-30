@@ -5,8 +5,10 @@ from mysite import app, db
 from mysite.model import SerializableModel
 from datetime import datetime
 import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+default_encoding = 'utf-8'
+if sys.getdefaultencoding() != default_encoding:
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
 
 
 class User(db.Model, SerializableModel):
