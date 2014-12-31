@@ -3,10 +3,11 @@ from flask import render_template, request, g, redirect, url_for, flash
 from flask.ext.login import login_required
 from mysite import app, db
 from mysite.model.question import Question
-from mysite.model.answer import Answer 
 import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+default_encoding = 'utf-8'
+if sys.getdefaultencoding() != default_encoding:
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
 
 
 @app.route('/questions/<int:question_id>', methods = ['GET' , 'POST'])
@@ -20,5 +21,19 @@ def show_or_update(question_id):
         question.description  = request.form['description']
         db.session.commit()
         return redirect(url_for('index'))
-    flash(u'只有原作者才有修改问题的权限!','error')
+    flash(u'Permission denied.','error')
     return redirect(url_for('show_or_update', question_id=question.id))
+
+@app.route('/question', methods=['GET', 'POST'])
+@login_required
+def question():
+    if request.method == 'POST':
+        if not request.form['title']:
+            flash(u'Please write down your questions!', 'error')
+        else:
+            question = Question(request.form['title'], request.form['description'], g.user.id)
+            db.session.add(question)
+            db.session.commit()
+            flash(u'Question published!')
+            return redirect(url_for('index'))
+    return render_template('question.html')

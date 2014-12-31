@@ -1,5 +1,5 @@
 <!doctype html>
-<title>问问</title>
+<title>Wenwen</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
 <style>
@@ -21,17 +21,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="brand" href="/">问问</a>
+				<a class="brand" href="/">Wenwen</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="/">首页</a></li>
+						<li class="active"><a href="/">Home</a></li>
 						{% if g.user.is_authenticated()%}
-							<li><a href="/new">提问</a></li>
-							<li><a href="{{ url_for('logout') }}">登出</a></li>
+							<li><a href="/question">Ask</a></li>
+							<li><a href="{{ url_for('logout') }}">Logout</a></li>
 						{% endif %}
 						{% if not g.user.is_authenticated()%}
-							<li><a href="{{ url_for('login') }}">登录</a></li>
-							<li><a href="{{ url_for('register') }}">注册</a></li>
+							<li><a href="{{ url_for('login') }}">Login</a></li>
+							<li><a href="{{ url_for('register') }}">Register</a></li>
 						{% endif %}
 					</ul>
 				</div>

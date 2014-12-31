@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
   <form action="" method=post class="form-horizontal">
-    <h2>注册问问 </h2>
+    <h2>Register</h2>
     <div class="control-group">
         <div class="controls">
           <input type="text" id="username" name="username" class="input-xlarge"
-            placeholder="输入用户名" value="{{ request.form.username }}"
+            placeholder="Input Username" value="{{ request.form.username }}"
             required>
         </div>
     </div>
@@ -13,14 +13,14 @@
     <div class="control-group">
         <div class="controls">
           <input type="password" id="password" name="password" class="input-xlarge"
-            placeholder="输入密码" value="{{ request.form.password }}"
+            placeholder="Input Password" value="{{ request.form.password }}"
             required>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-success">注册</button>
+          <button type="submit" class="btn btn-success">Register</button>
         </div>
     </div>
   </form>

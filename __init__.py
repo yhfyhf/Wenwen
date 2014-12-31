@@ -18,10 +18,7 @@ app.config['JSON_AS_ASCII'] = False
 db = SQLAlchemy(app)
 
 from mysite.views import index   # must import after app generated
-from mysite.views import login
-from mysite.views import logout
-from mysite.views import new
-from mysite.views import register
+from mysite.views import account
 from mysite.views import question
 
 from mysite.api import api

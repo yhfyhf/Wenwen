@@ -1,25 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
   <form action="" method=post class="form-horizontal">
-    <h2>修改问题</h2>
+    <h2>Update Question</h2>
     <div class="control-group">
         <div class="controls">
           <input type="text" id="title" name="title" class="input-xlarge"
-            placeholder="写下你的问题" value="{{ question.title }}"
+            placeholder="Write down your question." value="{{ question.title }}"
             required>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-          <textarea name="description" rows=10 class="input-xlarge" placeholder="问题的详细描述">{{ question.description }}</textarea>
+          <textarea name="description" rows=10 class="input-xlarge" placeholder="Write question details.">{{ question.description }}</textarea>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-success">更新问题</button>
-          <a href="{{ url_for('index') }}" class="btn btn-warning">取消</a>
+          <button type="submit" class="btn btn-success">Update Question</button>
+          <a href="{{ url_for('index') }}" class="btn btn-warning">Cancel</a>
         </div>
     </div>
   </form>
