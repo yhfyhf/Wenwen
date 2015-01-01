@@ -1,15 +1,15 @@
-## 问问
-一个类似于 Quora, Zhihu 的知识社区。
+## Wenwen
+A Q&A forum like Quora and Zhihu.
 
-## 安装步骤
+## Deploy
 
-### 生成自签名的 SSL 证书 
+### Generate SSL Certifate 
 
 	openssl genrsa 1024 > host.key
 	chmod 400 host.key
 	openssl req -new -x509 -nodes -sha1 -days 365 -key host.key > host.crt
 
-### 配置环境
+### Set up Environment
 
 	virtualenv app
 	cd app
@@ -18,11 +18,11 @@
 	cd mysite
 	pip install -r requirements.txt -i http://pypi.douban.com/simple
 
-### 修改 PYTHONPATH
+### Change PYTHONPATH
 
 	echo "export PYTHONPATH=your/path/to/app:\$PYTHONPATH" >> bin/activate
 
-### 运行
+### Run
 
 	python runserver.py
 	
