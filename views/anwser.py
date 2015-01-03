@@ -11,7 +11,15 @@ if sys.getdefaultencoding() != default_encoding:
     sys.setdefaultencoding(default_encoding)
 
 
-@app.route('/answer/<int:question_id>', methods = ['GET' , 'POST'])
+@app.route('/question/<int:question_id>/answer', methods=['POST'])
 @login_required
-	if request.mothod == "POST":
-		if not request.form['content'].strip:
+def answer(question_id):
+    answer_content = request.form['content'].strip()
+    if not answer_content:
+        flash(u'Please write down your answer!', 'error')
+    else:
+        answer = Answer(question_id, answer_content, g.user.id)
+        db.session.add(answer)
+        db.session.commit()
+        flash(u'Add your answer successfully!')
+    return redirect(url_for('show_or_update', question_id=question_id))

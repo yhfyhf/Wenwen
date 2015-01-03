@@ -21,7 +21,7 @@ def register():
     pw = request.form['password']
     if not un or not pw:
         print "None" 
-        flash(u"Please input your username and password!")
+        flash(u"Please input your username and password!", "error")
         session.close()
         return redirect(url_for('register'))
 
@@ -52,10 +52,10 @@ def login():
         remember_me = True
     registered_user = User.query.filter_by(username=username).first()
     if registered_user is None:
-        flash(u'Username not exists!' , 'error')
+        flash(u'Username not exists!', 'error')
         return redirect(url_for('login'))
     if not registered_user.check_password(password):
-        flash(u'Wrong password!','error')
+        flash(u'Wrong password!', 'error')
         return redirect(url_for('login'))
     login_user(registered_user, remember=remember_me)
     flash(u'Login successfully!')
