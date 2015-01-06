@@ -3,6 +3,7 @@ from flask import render_template, request, g, redirect, url_for, flash
 from flask.ext.login import login_required
 from mysite import app, db
 from mysite.model.question import Question
+from mysite.model.answer import Answer
 import sys
 default_encoding = 'utf-8'
 if sys.getdefaultencoding() != default_encoding:
@@ -36,8 +37,10 @@ def show_or_update(question_id):
         return redirect(url_for('index'))
 
     if request.method == 'GET':
-        return render_template('view.html', question=question)
-    # POST
+        answers = Answer.query.filter_by(question_id=question_id).all()
+        return render_template('view.html', question=question, answers=answers)
+
+    # request method is POST
     if question.user_id == g.user.id:   
         title = request.form['title'].strip()
         if not title:

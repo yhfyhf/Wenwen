@@ -20,6 +20,7 @@ db = SQLAlchemy(app)
 from mysite.views import index   # must import after app generated
 from mysite.views import account
 from mysite.views import question
+from mysite.views import answer
 
 from mysite.api import api
 app.register_blueprint(api, url_prefix="/api")

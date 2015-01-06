@@ -3,24 +3,38 @@
   <form action="" method=post class="form-horizontal">
     <h2>Update Question</h2>
     <div class="control-group">
-        <div class="controls">
-          <input type="text" id="title" name="title" class="input-xlarge"
-            placeholder="Write down your question." value="{{ question.title }}"
-            required>
-        </div>
+      <div class="controls">
+        <input type="text" id="title" name="title" class="input-xlarge"
+          placeholder="Write down your question." value="{{ question.title }}"
+          required>
+      </div>
     </div>
 
     <div class="control-group">
-        <div class="controls">
-          <textarea name="description" rows=10 class="input-xlarge" placeholder="Write question details.">{{ question.description }}</textarea>
-        </div>
+      <div class="controls">
+        <textarea name="description" rows=10 class="input-xlarge" placeholder="Write question details.">{{ question.description }}</textarea>
+      </div>
     </div>
 
     <div class="control-group">
-        <div class="controls">
-          <button type="submit" class="btn btn-success">Update Question</button>
-          <a href="{{ url_for('index') }}" class="btn btn-warning">Cancel</a>
-        </div>
+      <div class="controls">
+        <button type="submit" class="btn btn-success">Update Question</button>
+        <a href="{{ url_for('index') }}" class="btn btn-warning">Cancel</a>
+      </div>
     </div>
   </form>
+
+  <form action="/answer/add/{{ question.id }}" method=post class="form-horizontal">
+    <textarea name="content" cols="30" rows="5"></textarea>
+    <input type="submit" text="Submit">
+  </form>
+
+  <table>
+    {% for answer in answers %}
+      <tr>
+        <td>{{ answer.content }}</td>
+        <td>{{ answer.user_id }}</td>
+      </tr>
+    {% endfor %}
+  </table>
 {% endblock %}
